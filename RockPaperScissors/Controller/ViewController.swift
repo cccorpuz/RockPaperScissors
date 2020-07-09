@@ -10,7 +10,12 @@ import UIKit
 import SafariServices
 
 class ViewController: UIViewController, SFSafariViewControllerDelegate {
+    
+    var timer = Timer()
+    var countdown = 3
 
+    @IBOutlet weak var countdownTimer: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,6 +27,31 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         present(safariViewController, animated: true, completion: nil)
     }
     
+    @IBAction func onTimerPressed(_ sender: Any) {
+        //Stops the timer if it's already going
+        timer.invalidate()
+        
+        //Starts a timer that will count down to 0
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: self, repeats: true)
+    }
     
+    @objc func timerAction() {
+        if countdown != 0 {
+            countdown -= 1
+            countdownTimer.text = "\(countdown)"
+        }
+        else {
+            countdown = 3
+            countdownTimer.text = "\(countdown)"
+            
+            let alert = UIAlertController(title: "Timer Ended", message: "Make sure to choose an option before time runs out.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            timer.invalidate()
+        }
+    }
 }
 
