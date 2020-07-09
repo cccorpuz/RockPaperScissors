@@ -15,12 +15,15 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet weak var scissorsImageView: UIImageView!
     @IBOutlet weak var paperImageView: UIImageView!
     
-    var selectionString = ""
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    /*
+     Below is the code for gesture recognizer
+     */
+    var selectionString = ""
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -53,6 +56,9 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         print(selectionString)
     }
 
+    /*
+     Below is the code that allows for the SFSafariViewController to open wikipedia
+     */
     @IBAction func onRulesButtonPressed(_ sender: Any) {
         let safariViewController = SFSafariViewController(url: URL(string: "https://en.wikipedia.org/wiki/Rock_paper_scissors#:~:text=A%20player%20who%20decides%20to,%22scissors%20cuts%20paper%22).")!)
         safariViewController.delegate = self as SFSafariViewControllerDelegate

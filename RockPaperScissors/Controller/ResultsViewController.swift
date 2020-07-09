@@ -12,6 +12,11 @@ class ResultsViewController: UIViewController
 {
     @IBOutlet weak var userChoiceImage: UIImageView!
     @IBOutlet weak var computerChoiceImage: UIImageView!
+    
+    /*
+     This IBAction is to return to the main screen by popping the second ViewController
+     off of the navigation "stack"
+     */
     @IBAction func tryAgainButtonPressed(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
