@@ -26,6 +26,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     } // end viewDidLoad()
 
     /*
@@ -173,9 +174,11 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIImageP
         }
     } // End timerAction()
     
+    let altRock = UIImage(named: "AlternativeImages/bigrock")
+    let altPaper = UIImage(named: "AlternativeImages/bigpaper")
+    let altScissors = UIImage(named: "AlternativeImages/bigscissors")
     
-    // Function to access images in photo library
-    
+    /* Function to access images in photo library
     func selectImage(tap: UITapGestureRecognizer) {
 
         var imagePicker = UIImagePickerController()
@@ -184,13 +187,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIImageP
         imagePicker.allowsEditing = false
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         self.present(imagePicker, animated: true, completion: nil)
+        
 
         // Identify image view that was tapped:
         guard let viewTappedTag = tap.view?.tag else {return}
-        /* self.selectedImageView = imageViews[viewTappedTag - 1]
-            Person on stack overflow named their image views "imageView" + number... how do we identify which image was picked? */
+        self.selectedImageView = imageViews[viewTappedTag - 1]
+        // Person on stack overflow named their image views "imageView" + number... how do we identify which image was picked? 
 
-    }
+    } */
     
     
     
