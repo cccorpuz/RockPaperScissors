@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class ViewController: UIViewController, SFSafariViewControllerDelegate {
+class ViewController: UIViewController, SFSafariViewControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     /*
      Global Variables
      */
@@ -172,5 +172,27 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             timer.invalidate()
         }
     } // End timerAction()
+    
+    
+    // Function to access images in photo library
+    
+    func selectImage(tap: UITapGestureRecognizer) {
+
+        var imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.present(imagePicker, animated: true, completion: nil)
+
+        // Identify image view that was tapped:
+        guard let viewTappedTag = tap.view?.tag else {return}
+        /* self.selectedImageView = imageViews[viewTappedTag - 1]
+            Person on stack overflow named their image views "imageView" + number... how do we identify which image was picked? */
+
+    }
+    
+    
+    
 } // End ViewController.swift
 
